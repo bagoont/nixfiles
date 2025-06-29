@@ -1,0 +1,44 @@
+window#window {
+  background: rgba(0, 0, 0, 0.33);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+box#main {
+  padding: 8px;
+  border-radius: 16px;
+  background: rgb(30, 30, 46);
+}
+
+entry#entry {
+  border-radius: 10px;
+  box-shadow: none;
+}
+
+list#main {
+  background-color: transparent;
+}
+
+list#main > row {
+  padding: 0;
+}
+
+list#main > row:hover {
+  box-shadow: none;
+}
+
+row#match {
+  border-radius: 10px;
+  padding: 6px 8px;
+  margin-top: 8px;
+}
+
+label#match-title {
+  font-weight: bold;
+}
+
+label#match-desc {
+  font-size: 0.75rem;
+  font-weight: bold;
+  opacity: 0.8;
+}

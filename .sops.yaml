@@ -1,0 +1,11 @@
+keys:
+  - &bagoont age15wpw3g4t275d3nnamgyq7e0k5y6t0s4rlfmdvnc4pu3uf798dsyqul9z0n
+  - &lynx age1jgfvjtjplada092qc6u3c8t98v5j4sm7z0me0ssdqemyh47grydqk9p88d
+  - &manul age1szs5f93ltj2slhy0e643z0c9x3gh5dfxkj4sjmfdztfumtz83s4sfpzkv3
+creation_rules:
+  - path_regex: secrets.(yaml|json|env|ini)$
+    key_groups:
+    - age:
+      - *lynx
+      - *manul
+      - *bagoont  
