@@ -7,20 +7,24 @@
     enable = true;
     style = builtins.readFile (./. + "/style-dark.css");
     settings = {
+      "$schema" = "/etc/xdg/swaync/configSchema.json";
       positionX = "right";
       positionY = "top";
-      control-center-margin-top = 13;
-      control-center-margin-bottom = 13;
-      control-center-margin-right = 13;
+      cssPriority = "user";
+      control-center-margin-top = 22;
+      control-center-margin-bottom = 2;
+      control-center-margin-right = 1;
+      control-center-margin-left = 0;
       notification-icon-size = 64;
-      notification-body-image-height = 100;
+      notification-body-image-height = 128;
       notification-body-image-width = 200;
-      timeout = 10;
-      timeout-low = 5;
+      timeout = 6;
+      timeout-low = 3;
       timeout-critical = 0;
-      fit-to-screen = true;
-      control-center-width = 500;
-      notification-window-width = 500;
+      fit-to-screen = false;
+      control-center-width = 400;
+      control-center-height = 915;
+      notification-window-width = 375;
       keyboard-shortcuts = true;
       image-visibility = "when-available";
       transition-time = 200;
@@ -30,57 +34,69 @@
       widgets = [
         "title"
         "dnd"
-        "notifications"
-        "mpris"
         "volume"
+        "mpris"
+        "notifications"
         "buttons-grid"
       ];
       widget-config = {
         title = {
-          text = "Центр уведомлений";
+          text = "Уведомления";
           clear-all-button = true;
-          button-text = "󰆴 Очистить";
+          button-text = "";
+        };
+        volume = {
+          label = "";
+          expand-button-label = "";
+          collapse-button-label = "";
+          show-per-app = true;
+          show-per-app-icon = true;
+          show-per-app-label = true;
         };
         dnd = {
-          text = "Не беспокоить";
-        };
-        label = {
-          max-lines = 1;
-          text = "Центр уведомлений";
+          text = " Не беспокить";
         };
         mpris = {
           image-size = 96;
-          image-radius = 7;
+          image-radius = 4;
         };
-        volume = {
-          label = "󰕾";
-          show-per-app = true;
-        };
-        buttons-grid = {
+
+        "buttons-grid" = {
           actions = [
             {
-              label = "󰐥";
-              command = "sh -c systemctl poweroff";
+              label = "󱎫";
+              type = "action";
+              command = "sh -c '${lib.getExe pkgs.gnome-solanum}'";
             }
             {
-              label = "󰜉";
-              command = "sh -c systemctl reboot";
+              label = "󰃠";
+              type = "toggle";
+              active = true;
+              command = "sh -c '${pkgs.systemd}/bin/systemctl --user stop gammastep.service'";
+              update-command = "sh -c '${pkgs.systemd}/bin/systemctl --user start gammastep.service'";
             }
             {
-              label = "󰤄";
-              command = "sh -c systemctl susped";
+              label = "";
+              type = "toggle";
+              active = true;
+              command = "sh -c 'rfkill toggle bluetooth'";
             }
             {
-              label = "󰌾";
-              command = "sh -c hyprlock";
+              label = "";
+              type = "toggle";
+              command = "sh -c '${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle'";
             }
             {
-              label = "";
-              command = "sh -c ${lib.getExe pkgs.kooha}";
+              label = "";
+              active = true;
+              type = "toggle";
+              command = "sh -c '${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle'";
             }
+            # TODO: Toggle sing-box.
             {
-              label = "󰂯";
-              command = "sh -c ${lib.getExe pkgs.overskride}";
+              label = "󰯄";
+              active = true;
+              type = "toggle";
             }
           ];
         };

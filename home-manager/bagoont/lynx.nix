@@ -33,11 +33,10 @@
     ../apps/zed
     ../apps/podman
     ../apps/bitwarden
-    ../apps/solanum
     ../apps/zotero
     ../apps/ollama
     ../apps/thunderbird
-    # ../../apps/services/gammastep.nix
+    ../apps/services/gammastep.nix
     ../apps/services/gpg.nix
     ../apps/services/rnoise.nix
     #   ../apps/services/secrets.nix

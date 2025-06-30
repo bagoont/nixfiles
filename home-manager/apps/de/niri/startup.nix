@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   programs.niri.settings.spawn-at-startup = let
     swww_randomize_multi = pkgs.writeShellScript "swww" ''
       #!/bin/bash
@@ -77,18 +81,10 @@
     '';
   in [
     {
-      command = [
-        "sh"
-        "-c"
-        "${swww_randomize_multi} ~/Pictures/Wallpapers/"
-      ];
+      command = ["sh" "-c" "${swww_randomize_multi} ~/Pictures/Wallpapers/"];
     }
     {
-      command = [
-        "sh"
-        "-c"
-        "waybar"
-      ];
+      command = ["sh" "-c" "${lib.getExe pkgs.waybar}"];
     }
   ];
 }

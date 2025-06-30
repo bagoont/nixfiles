@@ -22,6 +22,7 @@
     ../apps/auto-cpufreq.nix
     ../apps/thermald.nix
     ../apps/fail2ban.nix
+    ../apps/btrfs.nix
   ];
 
   nixpkgs = {
@@ -50,7 +51,7 @@
 
   location.provider = "geoclue2";
   time.timeZone = "Asia/Tomsk";
-  
+
   i18n.defaultLocale = "ru_RU.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "ru_RU.UTF-8";
@@ -69,8 +70,8 @@
   };
 
   home-manager = {
-   extraSpecialArgs = {inherit inputs outputs;};
-   users.bagoont = import ../../home-manager/bagoont/lynx.nix;
+    extraSpecialArgs = {inherit inputs outputs;};
+    users.bagoont = import ../../home-manager/bagoont/lynx.nix;
   };
 
   users.users.bagoont = {

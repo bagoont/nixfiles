@@ -47,6 +47,7 @@
 
         "niri/window" = {
           format = "{}";
+          tooltip = false;
           max-length = 40;
           separate-outputs = true;
           icon = true;

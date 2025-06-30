@@ -26,6 +26,11 @@
         format.type = "ruff";
         lsp.server = "basedpyright";
       };
+      css = {
+        enable = true;
+        format.type = "prettier";
+        lsp.enable = false;
+      };
     };
 
     lsp = {

@@ -122,6 +122,7 @@
         {
           matches = [{app-id = "io.github.kaii_lb.Overskride";}];
           open-floating = true;
+          default-window-height.fixed = 750;
         }
         {
           matches = [{app-id = "org.gnome.Solanum";}];
