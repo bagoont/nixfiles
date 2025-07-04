@@ -29,7 +29,10 @@
     extraModulePackages = [];
     initrd = {
       availableKernelModules = ["amdgpu" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod"];
-      luks.devices."luks-774d261b-cf2a-45d1-8de7-a918697fe473".device = "/dev/disk/by-uuid/774d261b-cf2a-45d1-8de7-a918697fe473";
+      luks.devices = {
+        "luks-774d261b-cf2a-45d1-8de7-a918697fe473".device = "/dev/disk/by-uuid/774d261b-cf2a-45d1-8de7-a918697fe473";
+        "luks-cee2a805-188f-44b6-b577-879243c0eb6c".device = "/dev/disk/by-uuid/f55c2928-c46b-4d05-bf7f-ae71be04e3da";
+      };
     };
     loader = {
       efi.canTouchEfiVariables = true;
