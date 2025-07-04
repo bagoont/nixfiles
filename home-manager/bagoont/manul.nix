@@ -61,9 +61,15 @@
         api_url = "http://127.0.0.1:11434";
         avaliable_models = [
           {
-            name = "gemma3n:latest";
-            display_name = "Gemma3n";
-            max_tokens = 2048;
+            name = "deepseek-r1:latest";
+            display_name = "Deepseek R1";
+            max_tokens = 20480;
+            supports_tools = true;
+          }
+          {
+            name = "qwen3:latest";
+            display_name = "Qwen3";
+            max_tokens = 20480;
             supports_tools = true;
           }
         ];
@@ -74,10 +80,11 @@
   programs.nvf.settings.vim.assistant.avante-nvim = {
     enable = true;
     setupOpts = {
+      auto_suggestions_provider = "ollama";
       providers = {
         ollama = {
           endpoint = "http://127.0.0.1:11434";
-          model = "gemma3n:latest";
+          model = "hf.co/JetBrains/Mellum-4b-sft-python-gguf:latest";
           timeout = 30000;
           extra_request_body = {
             options = {
@@ -88,13 +95,7 @@
           };
         };
       };
-      behaviour = {
-        auto_suggestions = false;
-        auto_set_highlight_group = true;
-        auto_set_keymaps = true;
-        auto_apply_diff_after_generation = false;
-        support_paste_from_clipboard = true;
-      };
+      behaviour.auto_suggestions = true;
     };
   };
 
