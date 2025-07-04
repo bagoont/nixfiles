@@ -4,7 +4,7 @@
     options = {
       recolor-lightcolor = "rgba(0,0,0,0)";
 
-      font = "Noto Serif 12";
+      font = "Source Serif 4";
       selection-notification = true;
 
       selection-clipboard = "clipboard";

@@ -5,6 +5,10 @@
     settings.color_theme = "catppuccin_mocha";
   };
 
+  home.shellAliases = {
+    top = "btop";
+  };
+
   xdg.configFile = {
     "btop/themes/catppuccin_latte.theme".source = pkgs.fetchurl {
       url = "https://raw.githubusercontent.com/catppuccin/btop/7109eac2884e9ca1dae431c0d7b8bc2a7ce54e54/themes/catppuccin_latte.theme";

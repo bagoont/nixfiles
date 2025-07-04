@@ -74,6 +74,11 @@
     users.bagoont = import ../../home-manager/bagoont/lynx.nix;
   };
 
+  security.pam.services = {
+    hyprlock = {};
+    login.enableGnomeKeyring = true;
+  };
+
   users.users.bagoont = {
     hashedPasswordFile = config.sops.secrets."bagoont/password".path;
     isNormalUser = true;

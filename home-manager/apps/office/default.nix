@@ -1,3 +1,3 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [libreoffice-qt6-fresh];
+  home.packages = with pkgs; [libreoffice-fresh];
 }

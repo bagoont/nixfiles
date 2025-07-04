@@ -2,45 +2,42 @@
   inputs,
   outputs,
   pkgs,
-  config,
   lib,
   ...
 }: {
   imports = [
-    inputs.sops-nix.homeManagerModules.sops
-
     ./email.nix
 
     ../apps/sops
-    ../apps/bat
+    ../apps/bitwarden
     ../apps/btop
-    ../apps/de
+    ../apps/cli
+    ../apps/compression
+    ../apps/desktop
+    ../apps/development
     ../apps/firefox
+    ../apps/fonts
+    ../apps/ghostty
     ../apps/git
+    ../apps/gpg
     ../apps/imv
     ../apps/mpv
     ../apps/nvf
-    # ../apps/logseq
     ../apps/office
+    ../apps/ollama
     ../apps/overskride
     ../apps/pavucontrol
+    ../apps/podman
+    ../apps/rnoise
+    ../apps/shell
     ../apps/syncthing
     ../apps/telegram
-    ../apps/terminal
+    ../apps/thunderbird
     ../apps/transmission
     ../apps/yazi
     ../apps/zathura
     ../apps/zed
-    ../apps/podman
-    ../apps/bitwarden
-    ../apps/solanum
     ../apps/zotero
-    ../apps/ollama
-    ../apps/thunderbird
-    # ../../apps/services/gammastep.nix
-    ../apps/services/gpg.nix
-    ../apps/services/rnoise.nix
-    #   ../apps/services/secrets.nix
   ];
 
   nixpkgs = {
@@ -55,21 +52,49 @@
     homeDirectory = "/home/bagoont";
     sessionVariables = {
       EDITOR = lib.mkDefault "nvim";
-      MANPAGER = lib.mkDefault "sh -c 'col -bx | bat -l man -p'";
-      MANROFFOPT = "-c";
-      UV_PYTHON_DOWNLOADS = "never";
     };
-    packages = with pkgs; [
-      nerd-fonts.caskaydia-mono
-      nerd-fonts.caskaydia-cove
-      inter
-      noto-fonts-emoji
-    ];
-    pointerCursor = {
-      package = pkgs.catppuccin-cursors.mochaDark;
-      name = "catppuccin-mocha-dark-cursors";
-      size = 16;
-      gtk.enable = true;
+  };
+
+  programs.zed-editor = {
+    userSettings = {
+      language_models.ollama = {
+        api_url = "http://127.0.0.1:11434";
+        avaliable_models = [
+          {
+            name = "gemma3n:latest";
+            display_name = "Gemma3n";
+            max_tokens = 2048;
+            supports_tools = true;
+          }
+        ];
+      };
+    };
+  };
+
+  programs.nvf.settings.vim.assistant.avante-nvim = {
+    enable = true;
+    setupOpts = {
+      providers = {
+        ollama = {
+          endpoint = "http://127.0.0.1:11434";
+          model = "gemma3n:latest";
+          timeout = 30000;
+          extra_request_body = {
+            options = {
+              temperature = 0.75;
+              num_ctx = 2048;
+              keep_alive = "5m";
+            };
+          };
+        };
+      };
+      behaviour = {
+        auto_suggestions = false;
+        auto_set_highlight_group = true;
+        auto_set_keymaps = true;
+        auto_apply_diff_after_generation = false;
+        support_paste_from_clipboard = true;
+      };
     };
   };
 
@@ -93,54 +118,6 @@
   services.ollama.environmentVariables = {
     HCC_AMDGPU_TARGET = "gfx1032";
     HSA_OVERRIDE_GFX_VERSION = "10.3.0";
-  };
-
-  fonts.fontconfig = {
-    enable = true;
-    defaultFonts = {
-      emoji = ["Noto Color Emoji"];
-      monospace = ["CaskaydiaMono NF"];
-      sansSerif = ["Inter"];
-      serif = ["Inter"];
-    };
-  };
-
-  xdg = {
-    userDirs = {
-      enable = true;
-      createDirectories = true;
-      extraConfig = {
-        XDG_SCREENSHOTS_DIR = "${config.xdg.userDirs.pictures}/Screenshots";
-      };
-    };
-
-    mimeApps = {
-      enable = true;
-      associations.added = {
-        "x-scheme-handler/terminal" = ["ghostty.desktop"];
-      };
-
-      defaultApplications = {
-        "application/pdf" = ["org.pwmt.zathura-pdf-mupdf.desktop"];
-        "text/plain" = ["nvim.desktop"];
-        "inode/directory" = ["yazi.desktop"];
-        "image/jpeg" = ["imv.desktop"];
-        "image/png" = ["imv.desktop"];
-        "image/svg" = ["imv.desktop"];
-        "image/gif" = ["imv.desktop"];
-        "video/mp4" = ["mpv.desktop"];
-        "video/avi" = ["mpv.desktop"];
-        "video/mkv" = ["mpv.desktop"];
-        "text/html" = ["firefox.desktop"];
-        "text/xml" = ["firefox.desktop"];
-        "x-scheme-handler/mailto" = ["neomutt.desktop"];
-        "x-scheme-handler/http" = ["firefox.desktop"];
-        "x-scheme-handler/https" = ["firefox.desktop"];
-        "x-scheme-handler/terminal" = ["ghostty.desktop"];
-        "x-scheme-handler/tg" = ["org.telegram.desktop.desktop"];
-        "x-scheme-handler/tonsite" = ["org.telegram.desktop.desktop"];
-      };
-    };
   };
 
   programs.home-manager.enable = true;

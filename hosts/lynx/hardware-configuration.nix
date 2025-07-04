@@ -17,8 +17,6 @@
       enable = true;
       extraPackages = with pkgs; [
         amdvlk
-        clinfo
-        rocmPackages.clr.icd
       ];
     };
     bluetooth = {

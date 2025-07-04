@@ -1,6 +1,5 @@
 {
   inputs,
-  lib,
   config,
   ...
 }: {
@@ -18,8 +17,6 @@
       keyFile = "${config.home.homeDirectory}/.config/sops-nix/age/keys.txt";
       sshKeyPaths = [];
       generateKey = true;
-    };
-    secrets = {
     };
   };
 }

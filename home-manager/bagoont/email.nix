@@ -1,4 +1,6 @@
 {config, ...}: {
+  services.imapnotify.enable = true;
+
   sops.secrets = {
     "bagoont/email/password" = {};
   };

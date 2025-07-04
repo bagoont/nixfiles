@@ -25,9 +25,10 @@
   };
 
   boot = {
+    kernelModules = ["kvm-amd"];
+    extraModulePackages = [];
     initrd = {
       availableKernelModules = ["amdgpu" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod"];
-      kernelModules = ["kvm-amd"];
       luks.devices."luks-774d261b-cf2a-45d1-8de7-a918697fe473".device = "/dev/disk/by-uuid/774d261b-cf2a-45d1-8de7-a918697fe473";
     };
     loader = {

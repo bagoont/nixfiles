@@ -19,7 +19,6 @@
     ../apps/tpm.nix
     ../apps/pipewire.nix
     ../apps/fail2ban.nix
-    # ../apps/open-webui.nix
   ];
   nixpkgs = {
     overlays = [
@@ -73,6 +72,8 @@
     extraSpecialArgs = {inherit inputs outputs;};
     users.bagoont = import ../../home-manager/bagoont/manul.nix;
   };
+
+  security.pam.services.hyprlock.enableGnomeKeyring = true;
 
   users.users.bagoont = {
     hashedPasswordFile = config.sops.secrets."bagoont/password".path;

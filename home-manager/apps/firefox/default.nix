@@ -4,21 +4,15 @@
   config,
   ...
 }: {
-  # imports = [inputs.arkenfox.hmModules.default];
-
-  home.packages = with pkgs; [
-    firefoxpwa
-  ];
-
   programs.firefox = {
     enable = true;
+    package = pkgs.firefox;
     languagePacks = [
       "ru-RU"
       "en-US"
     ];
     nativeMessagingHosts = with pkgs; [
       ff2mpv-go
-      firefoxpwa
     ];
     policies = {
       DisableTelemetry = true;
@@ -28,7 +22,6 @@
       DisableAccounts = true;
       DisableFirefoxScreenshots = true;
     };
-    # arkenfox.enable = true;
     profiles.Default = {
       bookmarks = {};
       extensions = {
@@ -40,7 +33,7 @@
           ublock-origin
           localcdn
           history-cleaner
-          pwas-for-firefox
+          tridactyl
         ];
       };
       isDefault = true;
@@ -69,40 +62,27 @@
           };
         };
       };
-      # arkenfox = {
-      #  enable = true;
-      #  "0000".enable = true;
-      #  "0100" = {
-      #    enable = true;
-      #    "0102"."browser.startup.page".value = 1;
-      #   };
-      #   "0200".enable = true;
-      #   "0300".enable = true;
-      #   "0400".enable = false;
-      # "0600" = {
-      #   enable = true;
-      #   "0610"."browser.send_pings".enable = true;
-      #   };
-      #   "0700".enable = true;
-      #   "0800".enable = true;
-      #   "0900".enable = true;
-      # "1000" = {
-      #   enable = true;
-      #   "1001"."browser.cache.disk.enable".enable = true;
-      #   "1001"."browser.cache.disk.enable".value = true;
-      #    };
-      #   "1200".enable = true;
-      #  "1700".enable = true;
-      #   "2600" = {
-      #   enable = true;
-      #   "2653".enable = false;
-      # };
-      #  "2700".enable = true;
-      #  "5000" = {
-      #    enable = true;
-      #    "5003"."signon.rememberSignons".value = false;
-      #  };
-      #};
+      settings = {
+        "media.ffmpeg.vaapi.enabled" = true;
+        "widget.dmabuf.force-enabled" = true;
+        "privacy.webrtc.legacyGlobalIndicator" = false;
+        "app.shield.optoutstudies.enabled" = false;
+        "app.update.auto" = false;
+        "browser.contentblocking.category" = "strict";
+        "datareporting.policy.dataSubmissionEnable" = false;
+        "datareporting.policy.dataSubmissionPolicyAcceptedVersion" = 2;
+        "dom.security.https_only_mode" = true;
+        "dom.security.https_only_mode_ever_enabled" = true;
+        "identity.fxaccounts.enabled" = false;
+        "privacy.trackingprotection.enabled" = true;
+        "privacy.trackingprotection.socialtracking.enabled" = true;
+        "signon.rememberSignons" = false;
+      };
     };
+  };
+
+  home.file.".mozilla/firefox/${config.programs.firefox.profiles.Default.path}/user.js".source = pkgs.fetchurl {
+    url = "https://raw.githubusercontent.com/yokoffing/Betterfox/main/user.js";
+    hash = "sha256-As15gMIT8venJDL1xif11meV9kuzokZkJVSWIS6eJh8=";
   };
 }

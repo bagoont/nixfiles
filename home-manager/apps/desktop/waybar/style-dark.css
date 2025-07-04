@@ -1,0 +1,185 @@
+* {
+  all: unset;
+  font-family: "Inter", "FiraMono Nerd Font Propo";
+  font-size: 9pt;
+  font-weight: bold;
+}
+
+tooltip {
+  background: #181825;
+  border-radius: 12px;
+}
+
+tooltip label {
+  margin: 0.5rem;
+}
+
+window#waybar {
+  background: #181825;
+}
+
+.modules-left {
+  padding-left: 0.25rem;
+}
+
+.modules-right {
+  padding-right: 0.25rem;
+}
+
+#workspaces,
+#workspaces button,
+#wireplumber-modules,
+#backlight-modules,
+#battery-modules,
+#network-modules,
+#tray,
+#clock,
+#custom-exit,
+#custom-lock,
+#custom-suspend,
+#custom-reboot,
+#custom-power {
+  background: #313244;
+  border-radius: 8px;
+  margin: 0.5rem 0.25rem;
+  transition: 300ms linear;
+}
+
+#image,
+#window,
+#network.address,
+#wireplumber.volume,
+#backlight.percent,
+#battery.capacity,
+#tray,
+#clock {
+  padding: 0.25rem 0.75rem;
+}
+
+#network.icon {
+  background: #94e2d5;
+  color: #313244;
+  border-radius: 8px;
+  font-size: 13pt;
+  padding: 0.25rem;
+  min-width: 1.5rem;
+}
+
+#wireplumber.icon {
+  background: #f5c2e7;
+  color: #313244;
+  border-radius: 8px;
+  font-size: 13pt;
+  padding: 0.25rem;
+  min-width: 1.5rem;
+}
+
+#backlight.icon,
+#battery.icon {
+  background: #f9e2af;
+  color: #313244;
+  border-radius: 8px;
+  font-size: 9pt;
+  padding: 0.25rem;
+  min-width: 1.5rem;
+}
+
+#custom-exit,
+#custom-lock,
+#custom-suspend,
+#custom-reboot,
+#custom-power {
+  background: #b4befe;
+  color: #313244;
+  border-radius: 8px;
+  font-size: 13pt;
+  padding: 0.25rem;
+  min-width: 1.5rem;
+  transition: 300ms linear;
+}
+
+#custom-notifications {
+  background: #fab387;
+  color: #313244;
+  border-radius: 8px;
+  font-size: 14pt;
+  padding-left: 0.76rem;
+  min-width: 1.5rem;
+  margin: 0.5rem 0.25rem;
+}
+
+#workspaces button {
+  margin: 0;
+  padding: 0.35rem;
+  min-width: 1.5rem;
+}
+
+#workspaces button label {
+  color: #cdd6f4;
+}
+
+#workspaces button.empty label {
+  color: #585b70;
+}
+
+#workspaces button.urgent label,
+#workspaces button.active label {
+  color: #313244;
+}
+
+#workspaces button.urgent {
+  background: #fab387;
+}
+
+#workspaces button.active {
+  background: #cba6f7;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+  background: #f9e2af;
+}
+
+#workspaces button:hover,
+#clock:hover {
+  background: lighter(#313244);
+}
+
+#workspaces button.urgent:hover {
+  background: lighter(#f38ba8);
+}
+
+#workspaces button.active:hover,
+#network.icon:hover,
+#wireplumber.icon:hover,
+#custom-exit:hover,
+#custom-lock:hover,
+#custom-suspend:hover,
+#custom-reboot:hover,
+#custom-power:hover {
+  background: lighter(#f5e0dc);
+}
+
+#workspaces button.urgent:hover label,
+#workspaces button.active:hover label,
+#network.icon:hover label,
+#wireplumber.icon:hover label,
+#custom-exit:hover label,
+#custom-lock:hover label,
+#custom-suspend:hover label,
+#custom-reboot:hover label,
+#custom-power:hover label {
+  color: lighter(#313244);
+}
+
+#workspaces button:hover label {
+  color: lighter(#cdd6f4);
+}
+
+#workspaces button.empty:hover label {
+  color: lighter(#585b70);
+}

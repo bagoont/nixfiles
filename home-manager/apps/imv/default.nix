@@ -1,6 +1,7 @@
-{
+{pkgs, ...}: {
   programs.imv = {
     enable = true;
+    package = pkgs.imv;
     settings = {
       options = {
         background = "1e1e2e";

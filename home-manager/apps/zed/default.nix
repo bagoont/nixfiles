@@ -17,7 +17,7 @@
     ];
     userSettings = {
       theme = "Catppuccin Mocha";
-      buffer_font_family = "CaskaydiaCove NF";
+      buffer_font_family = "FiraCode Nerd Font";
       ui_font_family = "Inter";
       hour_format = "hour24";
       autosave = "on_window_change";
@@ -33,23 +33,6 @@
         mode = "dark";
         dark = "Catppuccin Mocha";
         light = "Catppuccin Latte";
-      };
-      language_models.ollama = {
-        api_url = "http://192.168.0.101:11434";
-        avaliable_models = [
-          {
-            name = "qwen3:4b";
-            display_name = "Qwen3";
-            max_tokens = 32768;
-            supports_tools = true;
-          }
-          {
-            name = "deepseek-r1:7b";
-            display_name = "DeepSeek";
-            max_tokens = 32768;
-            supports_tools = true;
-          }
-        ];
       };
       telemetry = {
         diagnostics = false;
