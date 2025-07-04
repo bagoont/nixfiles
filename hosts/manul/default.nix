@@ -11,6 +11,7 @@
 
     ./hardware-configuration.nix
     ./greetd.nix
+    ./networking.nix
 
     ../apps/sops.nix
     ../apps/fish.nix
@@ -44,9 +45,6 @@
     registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
     nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
   };
-
-  networking.hostName = "manul";
-  networking.networkmanager.enable = true;
 
   location.provider = "geoclue2";
   time.timeZone = "Asia/Tomsk";
