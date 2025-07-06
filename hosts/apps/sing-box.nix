@@ -42,7 +42,7 @@
         inbounds = [
           {
             type = "tun";
-            inet4_address = "172.16.0.1/30";
+            inet4_address = "192.168.0.0/24";
             auto_route = true;
             strict_route = true;
             sniff = true;
