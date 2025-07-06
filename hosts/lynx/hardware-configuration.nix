@@ -27,9 +27,14 @@
 
   boot = {
     kernelModules = ["kvm-amd"];
+    kernelParams = [
+      "amd_pstate=active"
+      "ideapad_laptop.allow_v4_dytc=Y"
+      "amdgpu.dcfeaturemask=0x8"
+    ];
     extraModulePackages = [];
     initrd = {
-      availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod"];
+      availableKernelModules = ["amdgpu" "nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod"];
       systemd = {
         tpm2.enable = true;
         enable = true;

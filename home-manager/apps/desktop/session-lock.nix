@@ -12,8 +12,6 @@
       general = {
         lock_cmd = sh "hyprlock || hyprlock";
         after_sleep_cmd = sh "${pkgs.niri}/bin/niri msg action power-on-monitors";
-        ignore_dbus_inhibit = false;
-        ignore_systemd_inhibit = false;
       };
 
       listener = [

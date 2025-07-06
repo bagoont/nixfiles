@@ -14,15 +14,16 @@
     ./networking.nix
 
     ../apps/sops.nix
-    ../apps/fish.nix
+    ../apps/btrfs.nix
     ../apps/openssh.nix
+    ../apps/fstrim.nix
     ../apps/dbus.nix
     ../apps/tpm.nix
     ../apps/pipewire.nix
+    ../apps/security.nix
     ../apps/auto-cpufreq.nix
     ../apps/thermald.nix
     ../apps/fail2ban.nix
-    ../apps/btrfs.nix
   ];
 
   nixpkgs = {
@@ -52,6 +53,12 @@
   location.provider = "geoclue2";
   time.timeZone = "Asia/Tomsk";
 
+  console = {
+    enable = true;
+    earlySetup = true;
+    font = "Cyr_a8x16";
+  };
+
   i18n.defaultLocale = "ru_RU.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "ru_RU.UTF-8";
@@ -74,11 +81,7 @@
     users.bagoont = import ../../home-manager/bagoont/lynx.nix;
   };
 
-  security.pam.services = {
-    hyprlock = {};
-    login.enableGnomeKeyring = true;
-  };
-
+  programs.fish.enable = true;
   users.users.bagoont = {
     hashedPasswordFile = config.sops.secrets."bagoont/password".path;
     isNormalUser = true;

@@ -14,11 +14,11 @@
     ./networking.nix
 
     ../apps/sops.nix
-    ../apps/fish.nix
     ../apps/openssh.nix
     ../apps/dbus.nix
     ../apps/tpm.nix
     ../apps/pipewire.nix
+    ../apps/security.nix
     ../apps/fail2ban.nix
   ];
   nixpkgs = {
@@ -71,8 +71,7 @@
     users.bagoont = import ../../home-manager/bagoont/manul.nix;
   };
 
-  security.pam.services.hyprlock.enableGnomeKeyring = true;
-
+  programs.enable.fish = true;
   users.users.bagoont = {
     hashedPasswordFile = config.sops.secrets."bagoont/password".path;
     isNormalUser = true;
