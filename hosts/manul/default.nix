@@ -71,7 +71,7 @@
     users.bagoont = import ../../home-manager/bagoont/manul.nix;
   };
 
-  programs.enable.fish = true;
+  programs.fish.enable = true;
   users.users.bagoont = {
     hashedPasswordFile = config.sops.secrets."bagoont/password".path;
     isNormalUser = true;
