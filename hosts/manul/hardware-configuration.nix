@@ -52,7 +52,6 @@
         '';
       };
     };
-    plymouth.enable = true;
   };
 
   fileSystems."/" = {

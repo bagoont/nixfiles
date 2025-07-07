@@ -14,16 +14,18 @@
       "catppuccin"
       "catppuccin-icons"
       "python-zed-snippets"
+      "git-firefly"
     ];
     userSettings = {
       theme = "Catppuccin Mocha";
       buffer_font_family = "FiraCode Nerd Font";
+      buffer_font_size = 12;
       ui_font_family = "Inter";
       hour_format = "hour24";
       autosave = "on_window_change";
       restore_on_startup = "last_workspace";
       auto_update = false;
-      vim_mode = true;
+      vim_mode = false;
       show_whitespaces = "all";
       centered_layout = {
         left_padding = 0.15;
@@ -49,15 +51,10 @@
           settings.diagnostics.ignored = ["unused_binding"];
           initialization_options.formatting.command = ["${lib.getExe pkgs.alejandra}" "--quiet" "--"];
         };
-        pyright = {
-          diagnosticMode = "workspace";
-          typeCheckingMode = "basic";
+        ty = {
           binary = {
-            path = "${pkgs.basedpyright}/bin/basedpyright-langserver";
-            arguments = ["--stdio"];
-          };
-          python = {
-            pythonPath = ".venv/bin/python";
+            path = lib.getExe pkgs.ty;
+            arguments = ["server"];
           };
         };
         ruff = {
@@ -80,7 +77,7 @@
           language_servers = ["nil"];
         };
         "Python" = {
-          language_servers = ["pyright" "ruff"];
+          language_servers = ["ty" "ruff"];
           format_on_save = "on";
           formatter = [
             {

@@ -24,7 +24,6 @@
     ../apps/mpv
     ../apps/nvf
     ../apps/office
-    ../apps/ollama
     ../apps/overskride
     ../apps/pavucontrol
     ../apps/podman
@@ -114,11 +113,6 @@
       key = "D17AE4329F38AFA355B8C0692CEBD2E41671AFF7";
       signByDefault = true;
     };
-  };
-
-  services.ollama.environmentVariables = {
-    HCC_AMDGPU_TARGET = "gfx1032";
-    HSA_OVERRIDE_GFX_VERSION = "10.3.0";
   };
 
   programs.home-manager.enable = true;

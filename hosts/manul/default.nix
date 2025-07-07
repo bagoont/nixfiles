@@ -14,13 +14,18 @@
     ./networking.nix
 
     ../apps/sops.nix
+    ../apps/btrfs.nix
     ../apps/openssh.nix
+    ../apps/fstrim.nix
+    ../apps/lm.nix
     ../apps/dbus.nix
     ../apps/tpm.nix
     ../apps/pipewire.nix
     ../apps/security.nix
+    ../apps/thermald.nix
     ../apps/fail2ban.nix
   ];
+
   nixpkgs = {
     overlays = [
       outputs.overlays.additions
@@ -48,6 +53,17 @@
 
   location.provider = "geoclue2";
   time.timeZone = "Asia/Tomsk";
+
+  console = {
+    enable = true;
+    earlySetup = true;
+    font = "Cyr_a8x16";
+  };
+
+  services.ollama = {
+    environmentVariables = {HCC_AMDGPU_TARGET = "gfx1032";};
+    rocmOverrideGfx = "10.3.0";
+  };
 
   i18n.defaultLocale = "ru_RU.UTF-8";
   i18n.extraLocaleSettings = {

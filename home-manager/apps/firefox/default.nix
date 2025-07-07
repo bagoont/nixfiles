@@ -13,6 +13,7 @@
     ];
     nativeMessagingHosts = with pkgs; [
       ff2mpv-go
+      firefoxpwa
     ];
     policies = {
       DisableTelemetry = true;
@@ -34,6 +35,7 @@
           localcdn
           history-cleaner
           tridactyl
+          pwas-for-firefox
         ];
       };
       isDefault = true;
