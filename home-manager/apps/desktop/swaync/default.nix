@@ -99,6 +99,7 @@
               label = "󰯄";
               active = true;
               type = "toggle";
+              command = "${pkgs.systemd}/bin/systemctl is-active --quiet sing-box.service && ${pkgs.systemd}/bin/systemctl stop sing-box.service || ${pkgs.systemd}/bin/systemctl start sing-box.service";
             }
           ];
         };

@@ -3,20 +3,22 @@
   config,
   ...
 }: {
-  services.sing-box = {
-    sops.secrets = {
-      "vless/address" = {group = "users";};
-      "vless/port" = {group = "users";};
-      "vless/server_name" = {group = "users";};
-      "vless/uuid" = {group = "users";};
-      "vless/public_key" = {group = "users";};
-      "vless/short_id" = {group = "users";};
-    };
+  sops.secrets = {
+    "vless/address" = {group = "users";};
+    "vless/port" = {group = "users";};
+    "vless/server_name" = {group = "users";};
+    "vless/uuid" = {group = "users";};
+    "vless/public_key" = {group = "users";};
+    "vless/short_id" = {group = "users";};
+  };
 
+  networking.firewall.trustedInterfaces = ["tun0"];
+  services.sing-box = {
+    enable = true;
     package = pkgs.sing-box;
-    services.sing-box.settings = {
+    settings = {
       log = {
-        level = "debug";
+        level = "warn";
       };
 
       inbounds = [
@@ -24,15 +26,21 @@
           type = "tun";
           interface_name = "tun0";
           domain_strategy = "ipv4_only";
-          inet4_address = "172.16.250.1/30";
-          auto_route = false;
-          strict_route = false;
+          address = ["172.16.250.1/30"];
+          auto_route = true;
+          strict_route = true;
           sniff = true;
         }
       ];
 
       outbounds = [
         {
+          type = "direct";
+          tag = "direct";
+        }
+
+        {
+          tag = "proxy";
           type = "vless";
           server = {_secret = config.sops.secrets."vless/address".path;};
           server_port = {_secret = config.sops.secrets."vless/port".path;};
@@ -54,9 +62,36 @@
           };
         }
       ];
-
       route = {
+        final = "direct";
         auto_detect_interface = true;
+        rules = [
+          {
+            rule_set = ["refilter_domains" "refilter_ipsum"];
+            outbound = "proxy";
+          }
+        ];
+        rule_set = [
+          {
+            tag = "refilter_domains";
+            type = "remote";
+            format = "binary";
+            url = "https://github.com/1andrevich/Re-filter-lists/releases/latest/download/ruleset-domain-refilter_domains.srs";
+            download_detour = "direct";
+          }
+          {
+            tag = "refilter_ipsum";
+            type = "remote";
+            format = "binary";
+            url = "https://github.com/1andrevich/Re-filter-lists/releases/latest/download/ruleset-ip-refilter_ipsum.srs";
+            download_detour = "direct";
+          }
+        ];
+      };
+      experimental = {
+        cache_file = {
+          enabled = true;
+        };
       };
     };
   };
