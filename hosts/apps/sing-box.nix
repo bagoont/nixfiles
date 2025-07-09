@@ -5,7 +5,6 @@
 }: {
   sops.secrets = {
     "vless/address" = {group = "users";};
-    "vless/port" = {group = "users";};
     "vless/server_name" = {group = "users";};
     "vless/uuid" = {group = "users";};
     "vless/public_key" = {group = "users";};
@@ -43,7 +42,7 @@
           tag = "proxy";
           type = "vless";
           server = {_secret = config.sops.secrets."vless/address".path;};
-          server_port = {_secret = config.sops.secrets."vless/port".path;};
+          server_port = 443;
           uuid = {_secret = config.sops.secrets."vless/uuid".path;};
           flow = "xtls-rprx-vision";
           tls = {

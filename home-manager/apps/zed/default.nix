@@ -6,15 +6,19 @@
   programs.zed-editor = {
     enable = true;
     extensions = [
-      "toml"
-      "env"
-      "make"
-      "dockerfile"
-      "docker-compose"
       "catppuccin"
       "catppuccin-icons"
-      "python-zed-snippets"
+      "csv"
+      "docker-compose"
+      "dockerfile"
+      "env"
       "git-firefly"
+      "html"
+      "nginx"
+      "nix"
+      "sql"
+      "toml"
+      "ty"
     ];
     userSettings = {
       theme = "Catppuccin Mocha";
