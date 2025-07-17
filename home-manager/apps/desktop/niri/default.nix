@@ -8,7 +8,6 @@
     inputs.niri.homeModules.niri
 
     ./binds.nix
-    ./startup.nix
   ];
 
   nixpkgs.overlays = [
@@ -116,7 +115,7 @@
           default-column-width.fixed = 300;
         }
         {
-          matches = [{app-id = "org.gnome.Solanum";}];
+          matches = [{app-id = "io.gitlab.idevecore.Pomodoro";}];
           open-floating = true;
         }
         {

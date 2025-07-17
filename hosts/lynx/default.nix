@@ -25,6 +25,7 @@
     ../apps/auto-cpufreq.nix
     ../apps/thermald.nix
     ../apps/fail2ban.nix
+    ../apps/udisks.nix
   ];
 
   nixpkgs = {

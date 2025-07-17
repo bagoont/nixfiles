@@ -12,6 +12,7 @@
     ./swww.nix
     ./xdg.nix
     ./gammastep.nix
+    ./udiskie.nix
     # ./shaderbg.nix
   ];
 }

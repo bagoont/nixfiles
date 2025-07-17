@@ -18,7 +18,9 @@
       "nix"
       "sql"
       "toml"
-      "ty"
+      "basedpyright"
+      "ruff"
+      "html-jinja"
     ];
     userSettings = {
       theme = "Catppuccin Mocha";
@@ -29,7 +31,7 @@
       autosave = "on_window_change";
       restore_on_startup = "last_workspace";
       auto_update = false;
-      vim_mode = false;
+      vim_mode = true;
       show_whitespaces = "all";
       centered_layout = {
         left_padding = 0.15;
@@ -55,10 +57,16 @@
           settings.diagnostics.ignored = ["unused_binding"];
           initialization_options.formatting.command = ["${lib.getExe pkgs.alejandra}" "--quiet" "--"];
         };
-        ty = {
+        basedpyright = {
           binary = {
-            path = lib.getExe pkgs.ty;
-            arguments = ["server"];
+            path = "${pkgs.basedpyright}/bin/basedpyright-langserver";
+            arguments = ["--stdio"];
+          };
+          settings = {
+            basedpyright.analysis = {
+              diagnosticMode = "workspace";
+              inlayHints.callArgumentNames = false;
+            };
           };
         };
         ruff = {
@@ -81,7 +89,7 @@
           language_servers = ["nil"];
         };
         "Python" = {
-          language_servers = ["ty" "ruff"];
+          language_servers = ["basedpyright" "ruff"];
           format_on_save = "on";
           formatter = [
             {

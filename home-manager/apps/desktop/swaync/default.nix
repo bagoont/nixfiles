@@ -69,7 +69,7 @@
             {
               label = "󱎫";
               type = "action";
-              command = sh "${lib.getExe pkgs.gnome-solanum}";
+              command = sh "${lib.getExe pkgs.pomodoro-gtk}";
             }
             {
               label = "󰃠";

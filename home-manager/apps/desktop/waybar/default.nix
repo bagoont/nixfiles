@@ -3,6 +3,12 @@
   lib,
   ...
 }: {
+  programs.niri.settings.spawn-at-startup = [
+    {
+      command = ["sh" "-c" "${lib.getExe pkgs.waybar}"];
+    }
+  ];
+
   programs.waybar = {
     enable = true;
     package = pkgs.waybar;
