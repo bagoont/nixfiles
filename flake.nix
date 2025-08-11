@@ -15,6 +15,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    prismlauncher = {
+      url = "github:Diegiwg/PrismLauncher-Cracked";
+    };
+
     sops-nix.url = "github:Mic92/sops-nix";
 
     anyrun = {

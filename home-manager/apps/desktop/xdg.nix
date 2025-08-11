@@ -92,7 +92,8 @@
         "application/x-extension-xht" = browsers;
         "x-scheme-handler/ftp" = browsers;
 
-        "inode/director" = ["yazi"];
+        "inode/directory" = ["yazi.desktop"];
+        "x-scheme-handler/file" = ["yazi.desktop"];
         "application/x-xz-compressed-tar" = ["org.gnome.FileRoller.desktop"];
         "x-scheme-handler/mailto" = ["thunderbird.desktop"];
         "x-scheme-handler/terminal" = ["ghostty.desktop"];

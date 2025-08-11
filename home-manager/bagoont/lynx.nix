@@ -1,5 +1,4 @@
 {
-  inputs,
   outputs,
   pkgs,
   lib,
@@ -17,6 +16,7 @@
     ../apps/development
     ../apps/firefox
     ../apps/fonts
+    ../apps/games/minecraft.nix
     ../apps/ghostty
     ../apps/git
     ../apps/gpg
@@ -33,6 +33,7 @@
     ../apps/telegram
     ../apps/thunderbird
     ../apps/transmission
+    ../apps/v2rayN
     ../apps/yazi
     ../apps/zathura
     ../apps/zed
@@ -56,13 +57,6 @@
 
   programs.niri = {
     settings = {
-      outputs = {
-        "eDP-1".mode = {
-          width = 1920;
-          height = 1080;
-          refresh = 59.997;
-        };
-      };
       input = {
         touchpad = {
           click-method = "button-areas";

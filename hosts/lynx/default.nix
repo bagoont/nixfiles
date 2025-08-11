@@ -21,11 +21,11 @@
     ../apps/tpm.nix
     ../apps/pipewire.nix
     ../apps/security.nix
-    ../apps/sing-box.nix
     ../apps/auto-cpufreq.nix
     ../apps/thermald.nix
     ../apps/fail2ban.nix
     ../apps/udisks.nix
+    ../apps/virtualization.nix
   ];
 
   nixpkgs = {
