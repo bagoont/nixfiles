@@ -74,7 +74,7 @@
             {
               label = "󰯄";
               type = "action";
-              command = "${lib.getExe pkgs.v2rayn}";
+              command = "${lib.getExe pkgs.nekoray}";
             }
             {
               label = "󰃠";

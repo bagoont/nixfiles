@@ -5,5 +5,5 @@
 }: {
   nixpkgs.overlays = [inputs.prismlauncher.overlays.default];
 
-  home.packages = with pkgs; [pkgs.prismlauncher];
+  home.packages = with pkgs; [prismlauncher];
 }

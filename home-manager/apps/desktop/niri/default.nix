@@ -136,6 +136,11 @@
           default-window-height.fixed = 750;
         }
         {
+          matches = [{app-id = "hiddify";}];
+          open-floating = true;
+          block-out-from = "screen-capture";
+        }
+        {
           matches = [{app-id = "nm-connection-editor";}];
           open-floating = true;
         }

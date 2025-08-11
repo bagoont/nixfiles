@@ -18,6 +18,7 @@
     ../apps/openssh.nix
     ../apps/fstrim.nix
     ../apps/lm.nix
+    ../apps/nekoray.nix
     ../apps/dbus.nix
     ../apps/tpm.nix
     ../apps/pipewire.nix

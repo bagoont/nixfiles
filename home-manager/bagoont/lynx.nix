@@ -33,7 +33,6 @@
     ../apps/telegram
     ../apps/thunderbird
     ../apps/transmission
-    ../apps/v2rayN
     ../apps/yazi
     ../apps/zathura
     ../apps/zed

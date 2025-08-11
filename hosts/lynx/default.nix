@@ -17,6 +17,7 @@
     ../apps/btrfs.nix
     ../apps/openssh.nix
     ../apps/fstrim.nix
+    ../apps/nekoray.nix
     ../apps/dbus.nix
     ../apps/tpm.nix
     ../apps/pipewire.nix
