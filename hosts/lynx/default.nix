@@ -25,7 +25,6 @@
     ../apps/thermald.nix
     ../apps/fail2ban.nix
     ../apps/udisks.nix
-    ../apps/virtualization.nix
   ];
 
   nixpkgs = {

@@ -72,6 +72,11 @@
               command = sh "${lib.getExe pkgs.pomodoro-gtk}";
             }
             {
+              label = "󰯄";
+              type = "action";
+              command = "${lib.getExe pkgs.v2rayn}";
+            }
+            {
               label = "󰃠";
               type = "toggle";
               active = true;
@@ -89,17 +94,9 @@
               command = sh "${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
             }
             {
-              label = "";
-              active = true;
+              label = "󰍭";
               type = "toggle";
               command = sh "${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
-            }
-            # TODO: Toggle sing-box.
-            {
-              label = "󰯄";
-              active = true;
-              type = "toggle";
-              command = "${pkgs.systemd}/bin/systemctl is-active --quiet sing-box.service && ${pkgs.systemd}/bin/systemctl stop sing-box.service || ${pkgs.systemd}/bin/systemctl start sing-box.service";
             }
           ];
         };
