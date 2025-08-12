@@ -25,7 +25,6 @@
     ../apps/office
     ../apps/overskride
     ../apps/pavucontrol
-    ../apps/docker
     ../apps/rnoise
     ../apps/shell
     ../apps/syncthing
