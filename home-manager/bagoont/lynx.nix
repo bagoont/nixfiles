@@ -12,6 +12,7 @@
     ../apps/btop
     ../apps/cli
     ../apps/compression
+    ../apps/containers
     ../apps/desktop
     ../apps/development
     ../apps/firefox
@@ -26,7 +27,6 @@
     ../apps/office
     ../apps/overskride
     ../apps/pavucontrol
-    ../apps/podman
     ../apps/rnoise
     ../apps/shell
     ../apps/syncthing

@@ -15,6 +15,7 @@
 
     ../apps/sops.nix
     ../apps/btrfs.nix
+    ../apps/containers.nix
     ../apps/openssh.nix
     ../apps/fstrim.nix
     ../apps/lm.nix
@@ -94,7 +95,7 @@
     hashedPasswordFile = config.sops.secrets."bagoont/password".path;
     isNormalUser = true;
     shell = pkgs.fish;
-    extraGroups = ["networkmanager" "wheel" "input" "audio" "video" "render"];
+    extraGroups = ["networkmanager" "wheel" "input" "audio" "video" "render" "podman"];
   };
 
   # This value determines the NixOS release from which the default
