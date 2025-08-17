@@ -89,7 +89,7 @@
     hashedPasswordFile = config.sops.secrets."bagoont/password".path;
     isNormalUser = true;
     shell = pkgs.fish;
-    extraGroups = ["networkmanager" "wheel" "input" "audio" "video" "render" "podman"];
+    extraGroups = ["networkmanager" "wheel" "input" "audio" "video" "render" "docker"];
   };
 
   # This value determines the NixOS release from which the default
