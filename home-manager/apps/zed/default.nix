@@ -20,7 +20,6 @@
       "toml"
       "basedpyright"
       "ruff"
-      "html-jinja"
     ];
     userSettings = {
       theme = "Catppuccin Mocha";
@@ -82,6 +81,13 @@
             };
           };
         };
+        vscode-html-language-server = {
+          settings = {
+            html = {
+              format.templating = true;
+            };
+          };
+        };
       };
 
       languages = {
@@ -105,8 +111,17 @@
         };
         "YAML" = {
           tab_size = 2;
-          format_on_save = "on";
+          format_on_save = {
+            external = {
+              command = "mix";
+              arguments = ["format" "--stdin-filename" "{buffer_path}" "-"];
+            };
+          };
           formatter = "language_server";
+        };
+        "HTML" = {
+          formatter = "language_server";
+          format_on_save = "on";
         };
       };
     };
