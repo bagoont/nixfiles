@@ -21,10 +21,6 @@
 
     sops-nix.url = "github:Mic92/sops-nix";
 
-    anyrun = {
-      url = "github:anyrun-org/anyrun";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     niri.url = "github:sodiboo/niri-flake";
     nvf.url = "github:notashelf/nvf";
     firefox-addons = {
