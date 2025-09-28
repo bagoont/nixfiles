@@ -4,16 +4,16 @@
   config,
   ...
 }: {
-  programs.firefox = {
+  imports = [inputs.zen-browser.homeModules.beta];
+
+  programs.zen-browser = {
     enable = true;
-    package = pkgs.firefox;
     languagePacks = [
       "ru-RU"
       "en-US"
     ];
     nativeMessagingHosts = with pkgs; [
       ff2mpv-go
-      firefoxpwa
     ];
     policies = {
       DisableTelemetry = true;
@@ -35,7 +35,6 @@
           localcdn
           history-cleaner
           tridactyl
-          pwas-for-firefox
         ];
       };
       isDefault = true;
@@ -65,26 +64,30 @@
         };
       };
       settings = {
-        "media.ffmpeg.vaapi.enabled" = true;
-        "widget.dmabuf.force-enabled" = true;
-        "privacy.webrtc.legacyGlobalIndicator" = false;
-        "app.shield.optoutstudies.enabled" = false;
-        "app.update.auto" = false;
-        "browser.contentblocking.category" = "strict";
-        "datareporting.policy.dataSubmissionEnable" = false;
-        "datareporting.policy.dataSubmissionPolicyAcceptedVersion" = 2;
-        "dom.security.https_only_mode" = true;
-        "dom.security.https_only_mode_ever_enabled" = true;
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "identity.fxaccounts.enabled" = false;
-        "privacy.trackingprotection.enabled" = true;
-        "privacy.trackingprotection.socialtracking.enabled" = true;
         "signon.rememberSignons" = false;
       };
     };
   };
 
-  home.file.".mozilla/firefox/${config.programs.firefox.profiles.Default.path}/user.js".source = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/yokoffing/Betterfox/main/user.js";
-    hash = "sha256-As15gMIT8venJDL1xif11meV9kuzokZkJVSWIS6eJh8=";
+  home.file = {
+    ".zen/${config.programs.zen-browser.profiles.Default.path}/user.js".source = pkgs.fetchurl {
+      url = "https://raw.githubusercontent.com/yokoffing/Betterfox/main/user.js";
+      hash = "sha256-As15gMIT8venJDL1xif11meV9kuzokZkJVSWIS6eJh8=";
+    };
+
+    ".zen/${config.programs.zen-browser.profiles.Default.path}/chrome/userChrome.css".source = pkgs.fetchurl {
+      url = "https://raw.githubusercontent.com/catppuccin/zen-browser/refs/heads/main/themes/Mocha/Blue/userChrome.css";
+      hash = "sha256-NcJq8lHAnTxt6+bR4wz4kUfi5xiLiHnY9PFqFl+7JWk=";
+    };
+    ".zen/${config.programs.zen-browser.profiles.Default.path}/chrome/userContent.css".source = pkgs.fetchurl {
+      url = "https://raw.githubusercontent.com/catppuccin/zen-browser/refs/heads/main/themes/Mocha/Blue/userContent.css";
+      hash = "sha256-X+1EODQpILtAbIZOpI8gx6YqxohFc/wLff8A8Cu+OZs=";
+    };
+    ".zen/${config.programs.zen-browser.profiles.Default.path}/chrome/zen-logo-mocha.svg".source = pkgs.fetchurl {
+      url = "https://raw.githubusercontent.com/catppuccin/zen-browser/refs/heads/main/themes/Mocha/Blue/zen-logo-mocha.svg";
+      hash = "sha256-tBvov2yGWcUyoLG5hEiGlgc62zGux6CJIR1PSn7NmoM=";
+    };
   };
 }
