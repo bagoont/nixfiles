@@ -21,9 +21,9 @@
 
     "${Mod}+D".action = toggle-column-tabbed-display;
 
-    "Print".action = screenshot-window;
-    "Shift+Print".action = screenshot;
-    "${Mod}+Shift+S".action = screenshot;
+    # "Print".action.screenshot-screen = [];
+    # "Shift+Print".action = screenshot;
+    # "${Mod}+Shift+S".action = screenshot-window;
 
     "${Mod}+Insert".action = set-dynamic-cast-window;
     "${Mod}+Shift+Insert".action = set-dynamic-cast-monitor;

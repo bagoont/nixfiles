@@ -5,13 +5,13 @@
 }: {
   sops = {
     secrets = {
-      "wireguard/manul/private-key" = {};
-      "wireguard/manul/preshared-key" = {};
+      "wireguard/lion/private-key" = {};
+      "wireguard/lion/preshared-key" = {};
     };
   };
 
   networking = {
-    hostName = "manul";
+    hostName = "lion";
     # enableIPv6 = true;
     useDHCP = lib.mkDefault true;
     networkmanager.enable = true;
@@ -23,12 +23,12 @@
     };
     wg-quick.interfaces = {
       wg0 = {
-        address = ["10.0.0.5/32" "fdb6:8226:fba6::5/128"];
-        privateKeyFile = config.sops.secrets."wireguard/manul/private-key".path;
+        address = ["10.0.0.3/32" "fdb6:8226:fba6::3/128"];
+        privateKeyFile = config.sops.secrets."wireguard/lion/private-key".path;
         peers = [
           {
             publicKey = "1+iPtqOMY44H3c3ftYqhUeHTANQSEU0AW2EI4lzDoR4=";
-            presharedKeyFile = config.sops.secrets."wireguard/manul/preshared-key".path;
+            presharedKeyFile = config.sops.secrets."wireguard/lion/preshared-key".path;
             endpoint = "45.91.238.71:63177";
             allowedIPs = ["10.0.0.0/24" "fdb6:8226:fba6::/64"];
           }

@@ -15,7 +15,6 @@
     ../apps/containers
     ../apps/desktop
     ../apps/development
-    ../apps/firefox
     ../apps/fonts
     ../apps/games/minecraft.nix
     ../apps/ghostty
@@ -36,6 +35,7 @@
     ../apps/yazi
     ../apps/zathura
     ../apps/zed
+    ../apps/zen
     ../apps/zotero
   ];
 

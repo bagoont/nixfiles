@@ -8,7 +8,7 @@
   ];
 
   sops = {
-    defaultSopsFile = ../../../secrets/secrets.yaml;
+    defaultSopsFile = ../../../secrets/secrets.yml;
     validateSopsFiles = true;
     gnupg = {
       sshKeyPaths = [];

@@ -13,6 +13,7 @@
     ./greetd.nix
     ./networking.nix
 
+    ../containers/dockge.nix
     ../apps/sops.nix
     ../apps/btrfs.nix
     ../apps/containers.nix

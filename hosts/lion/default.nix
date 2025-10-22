@@ -10,23 +10,16 @@
     inputs.home-manager.nixosModules.home-manager
 
     ./hardware-configuration.nix
-    ./greetd.nix
     ./networking.nix
+    ./traefik.nix
 
-    ../apps/sops.nix
-    ../apps/btrfs.nix
     ../apps/containers.nix
-    ../apps/openssh.nix
-    ../apps/fstrim.nix
-    ../apps/lm.nix
-    ../apps/nekoray.nix
-    ../apps/dbus.nix
-    ../apps/tpm.nix
-    ../apps/pipewire.nix
-    ../apps/security.nix
-    ../apps/thermald.nix
+    ../apps/btrfs.nix
     ../apps/fail2ban.nix
-    ../apps/udisks.nix
+    ../apps/fstrim.nix
+    ../apps/openssh.nix
+    ../apps/sops.nix
+    ../apps/vaultwarden.nix
   ];
 
   nixpkgs = {
@@ -37,7 +30,6 @@
     ];
     config = {
       allowUnfree = true;
-      rocmSupport = true;
     };
   };
 
@@ -56,17 +48,6 @@
 
   location.provider = "geoclue2";
   time.timeZone = "Asia/Tomsk";
-
-  console = {
-    enable = true;
-    earlySetup = true;
-    font = "Cyr_a8x16";
-  };
-
-  services.ollama = {
-    environmentVariables = {HCC_AMDGPU_TARGET = "gfx1032";};
-    rocmOverrideGfx = "10.3.0";
-  };
 
   i18n.defaultLocale = "ru_RU.UTF-8";
   i18n.extraLocaleSettings = {
@@ -87,7 +68,7 @@
 
   home-manager = {
     extraSpecialArgs = {inherit inputs outputs;};
-    users.bagoont = import ../../home-manager/bagoont/manul.nix;
+    users.bagoont = import ../../home-manager/bagoont/lynx.nix;
   };
 
   programs.fish.enable = true;
@@ -104,5 +85,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.05"; # Did you read the comment?
+  system.stateVersion = "25.05";
 }

@@ -29,12 +29,12 @@
         packages = with inputs.firefox-addons.packages."x86_64-linux"; [
           bitwarden
           metamask
-          nighttab
           ff2mpv
           ublock-origin
           localcdn
           history-cleaner
           tridactyl
+          multi-account-containers
         ];
       };
       isDefault = true;
