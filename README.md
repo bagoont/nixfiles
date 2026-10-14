@@ -28,12 +28,13 @@ See **[Keyboard Shortcuts](KEYBINDINGS.md)** for the configured bindings and eve
 
 The homelab configuration includes:
 
-- **nginx** for reverse proxying and **Authelia** for authentication.
 - **Forgejo** for Git hosting.
 - **Vaultwarden** for password management.
 - **OpenCloud** for file storage.
 - **Open WebUI** for an AI chat interface.
-- **PostgreSQL** and a [media stack](hosts/homelab/services/media/default.nix).
+- **Jellyfin** for media streaming.
+- **qBittorrent** for downloads.
+- **Authelia** for single sign-on and two-factor authentication.
 
 Service definitions live in [`hosts/homelab/services/`](hosts/homelab/services/).
 
