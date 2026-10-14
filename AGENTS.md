@@ -48,11 +48,3 @@ system activation is performed by the user.
 The tools `pre-commit`, `mcp-nixos`, and `forgejo-mcp` are available through `shell.nix`.
 Add new tools there; `.envrc` loads the development shell through direnv.
 
-## Pi Agents
-
-- `dev` — small changes under a clear contract; does not run builds.
-- `runner` — read-only reconnaissance and requested validation.
-- `security` — read-only audits of services, networking, authentication, and secrets.
-
-The current conversation plans the work, delegates bounded tasks, and reviews the diff.
-Changes to services, networking, authentication, or secrets require a security audit.
