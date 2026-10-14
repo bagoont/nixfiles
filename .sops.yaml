@@ -1,0 +1,54 @@
+keys:
+    - &bagoont age1xq89dmvhnypwwlefkr5mqew9s4w7xude8r8lx3g0690083qvtqxqxazh8k
+    - &ideapad age13shs3kn3a5480hj35hqcfqqg4dzr6wcc5gnphadqygzy0xxgpa2qxhdyeh
+    - &homelab age1pycpe7hcmj3m2dq33rqzw3a6c42w6gnkgh94dpgfpl50rzztz5psq42um2
+
+creation_rules:
+    - path_regex: homelab.(yaml|json|env|ini)$
+      key_groups:
+          - age:
+                - *homelab
+                - *bagoont
+    - path_regex: 'authelia/.*\.(yaml|json|env|ini|bin)$'
+      key_groups:
+          - age:
+                - *homelab
+                - *bagoont
+    - path_regex: vaultwarden.(yaml|json|env|ini)$
+      key_groups:
+          - age:
+                - *homelab
+                - *bagoont
+    - path_regex: opencloud.(yaml|json|env|ini)$
+      key_groups:
+          - age:
+                - *homelab
+                - *bagoont
+    - path_regex: open-webui.(yaml|json|env|ini)$
+      key_groups:
+          - age:
+                - *homelab
+                - *bagoont
+    - path_regex: forgejo.(yaml|json|env|ini)$
+      key_groups:
+          - age:
+                - *homelab
+                - *bagoont
+    - path_regex: siyuan.(yaml|json|env|ini)$
+      key_groups:
+          - age:
+                - *homelab
+                - *bagoont
+
+    - path_regex: secrets.(yaml|json|env|ini)$
+      key_groups:
+          - age:
+                - *bagoont
+                - *ideapad
+                - *homelab
+    - path_regex: email.(yaml|json|env|ini)$
+      key_groups:
+          - age:
+                - *bagoont
+                - *ideapad
+                - *homelab
