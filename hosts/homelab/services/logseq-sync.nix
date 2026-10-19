@@ -7,6 +7,7 @@
     DB_SYNC_ADMIN_TOKEN=${config.sops.placeholder."logseq-sync/token"}
   '';
 
+  users.groups.logseq-sync = {};
   users.users.logseq-sync = {
     isSystemUser = true;
     createHome = false;
