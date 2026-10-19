@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   sops.secrets = {
     "opencloud/environment" = {
       sopsFile = ../../../secrets/opencloud.yaml;
@@ -10,6 +14,7 @@
   services = {
     opencloud = {
       enable = true;
+      package = pkgs.opencloud;
       url = "https://cloud.bagoont.ru";
       port = 9200;
       settings = {
