@@ -7,10 +7,8 @@
     DB_SYNC_ADMIN_TOKEN=${config.sops.placeholder."logseq-sync/token"}
   '';
 
-  systemd.tmpfiles.rules = ["d /var/lib/logseq-sync 0700 -"];
-
   virtualisation.oci-containers.containers.logseq-sync = {
-    image = "ghcr.io/yshalsager/logseq-selfhost-sync@latest";
+    image = "ghcr.io/yshalsager/logseq-selfhost-sync:latest";
     ports = ["8787:8787"];
     volumes = ["/var/lib/logseq-sync:/app/data"];
     environment = {
