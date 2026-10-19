@@ -7,8 +7,17 @@
     DB_SYNC_ADMIN_TOKEN=${config.sops.placeholder."logseq-sync/token"}
   '';
 
+  users.users.logseq-sync = {
+    isSystemUser = true;
+    createHome = false;
+    group = "logseq-sync";
+  };
+
+  systemd.tmpfiles.rules = ["d /var/lib/logseq-sync 0700 logseq-sync logseq-sync -"];
+
   virtualisation.oci-containers.containers.logseq-sync = {
     image = "ghcr.io/yshalsager/logseq-selfhost-sync:latest";
+    user = "${toString config.users.users.logseq-sync.uid}:${toString config.users.groups.logseq-sync.gid}";
     ports = ["8787:8787"];
     volumes = ["/var/lib/logseq-sync:/app/data"];
     environment = {
