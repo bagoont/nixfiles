@@ -18,6 +18,7 @@
     ./services/authelia.nix
     ./services/open-webui.nix
     ./services/opencloud.nix
+    ./services/logseq-sync.nix
   ];
 
   nix = {

@@ -8,7 +8,7 @@
 
   src = fetchurl {
     url = "https://github.com/logseq/logseq/releases/download/nightly/Logseq-linux-x86_64-${version}.AppImage";
-    hash = "sha256-FB54kD3owPCLq8D31Y/u+I0R2qgflFHK//AiAMu2DKM=";
+    hash = "sha256-g26u3DQHXxiAyrSqLYWuKLNY6DcpoA+V3zZkZHLCIrk=";
   };
 
   appimageContents = appimageTools.extract {inherit pname version src;};

@@ -34,7 +34,7 @@ creation_rules:
           - age:
                 - *homelab
                 - *bagoont
-    - path_regex: siyuan.(yaml|json|env|ini)$
+    - path_regex: logseq-sync.(yaml|json|env|ini)$
       key_groups:
           - age:
                 - *homelab
