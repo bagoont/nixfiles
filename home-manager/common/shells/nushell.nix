@@ -1,10 +1,10 @@
 {pkgs, ...}: {
   programs.nushell = {
     enable = true;
+    loadSessionVariables = false;
     plugins = with pkgs.nushellPlugins; [
       gstat
       query
-      polars
       formats
     ];
     shellAliases = {

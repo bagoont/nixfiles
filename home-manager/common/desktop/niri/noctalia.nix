@@ -11,9 +11,11 @@
         ];
         concave_edge_corners = false;
         end = [
-          "group:g3"
+          "widget"
+          "nix-monitor"
           "group:g1"
           "group:g2"
+          "group:g3"
           "group:g4"
           "battery"
           "session"
@@ -38,7 +40,6 @@
             members = [
               "cpu"
               "ram"
-              "nix-monitor"
             ];
             opacity = 1.0;
             padding = 6.0;
@@ -50,8 +51,7 @@
             fill = "surface_variant";
             id = "g2";
             members = [
-              "network"
-              "bluetooth"
+              "notifications"
             ];
             opacity = 1.0;
             padding = 6.0;
@@ -63,8 +63,8 @@
             fill = "surface_variant";
             id = "g3";
             members = [
-              "widget"
-              "notifications"
+              "brightness"
+              "volume"
             ];
             opacity = 1.0;
             padding = 6.0;
@@ -76,8 +76,6 @@
             fill = "surface_variant";
             id = "g4";
             members = [
-              "brightness"
-              "volume"
               "tray"
             ];
             opacity = 1.0;

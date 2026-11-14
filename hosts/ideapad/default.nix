@@ -30,6 +30,9 @@
     "docker"
   ];
 
+  # Temporary exception for Zotero's EOL Gecko runtime; remove after its update.
+  nixpkgs.config.permittedInsecurePackages = ["firefox-esr-140-bin-unwrapped-140.17.0esr"];
+
   home-manager.users.bagoont = import ../../home-manager/bagoont/hosts/ideapad.nix;
 
   services = {

@@ -2,10 +2,13 @@
   additions = final: _prev: import ../pkgs final.pkgs;
 
   modifications = _final: prev: {
-    typescript-language-server = prev.typescript-language-server.overrideAttrs (old: {
-      pnpmDeps = old.pnpmDeps.overrideAttrs (_: {
-        outputHash = "sha256-xR/EF60lVBsITKgH7wCM2wHM46PFQevD51KfCENSUH4=";
-      });
+    # Remove once nixpkgs includes pi-schema in Pi's runtime workspace dependencies.
+    pi-coding-agent = prev.pi-coding-agent.overrideAttrs (old: {
+      postInstall =
+        (old.postInstall or "")
+        + ''
+          cp -r packages/schema "$out/lib/node_modules/pi-monorepo/node_modules/@earendil-works/pi-schema"
+        '';
     });
   };
 

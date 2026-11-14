@@ -4,6 +4,7 @@
   ];
 
   home.packages = with pkgs; [
+    zotero
     libreoffice-qt-stable
     opencloud-desktop
     telegram-desktop

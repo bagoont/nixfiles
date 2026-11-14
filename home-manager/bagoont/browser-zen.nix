@@ -194,6 +194,7 @@
         bitwarden
         metamask
         ff2mpv
+        zotero-connector
       ];
     };
     search = {

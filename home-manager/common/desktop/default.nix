@@ -12,8 +12,8 @@
     dejavu_fonts
     source-serif
     corefonts
-    nerd-fonts.fira-mono
-    nerd-fonts.fira-code
+    nordwand-mono
+    nerd-fonts.symbols-only
     noto-fonts-color-emoji
   ];
 
@@ -29,7 +29,7 @@
     enable = true;
     defaultFonts = {
       emoji = ["Noto Color Emoji"];
-      monospace = ["Fira Mono" "DejaVu Sans Mono"];
+      monospace = ["Nordwand Mono" "DejaVu Sans Mono" "Symbols Nerd Font Mono"];
       sansSerif = ["Inter" "DejaVu Sans"];
       serif = ["Source Serif 4" "DejaVu Serif"];
     };

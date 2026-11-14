@@ -5,9 +5,6 @@
         command = "${pkgs.context-mode}/bin/context-mode";
         exposure = "direct";
       };
-      nixos = {
-        command = "${pkgs.mcp-nixos}/bin/mcp-nixos";
-      };
     };
   };
 
@@ -37,10 +34,8 @@
     extraPackages = with pkgs; [
       bun
       context-mode
-      forgejo-mcp
       go
       gopls
-      mcp-nixos
       nodejs_22
       ruff
       ty
@@ -48,9 +43,6 @@
       typescript-language-server
     ];
     settings = {
-      defaultModel = "gpt-6.1-sol";
-      defaultProvider = "openai-codex";
-      extensions = ["+builtin:mcp"];
       packages = [
         "npm:context-mode"
         "npm:pi-nvim"
@@ -59,9 +51,12 @@
         "npm:pi-fff"
         "npm:@juicesharp/rpiv-ask-user-question"
         "npm:@juicesharp/rpiv-todo"
-        "npm:@narumitw/pi-usage"
         "npm:@narumitw/pi-lsp"
       ];
+      extensions = ["+builtin:mcp"];
+      defaultModel = "gpt-6.1-sol";
+      defaultProvider = "openai";
+      subagents.disableBuiltins = true;
       compaction = {
         enabled = true;
         reserveTokens = 16384;
@@ -114,12 +109,7 @@
 
       ## Subagents
 
-      If subagents are available, use them when delegation provides a clear benefit, especially for:
-      - codebase reconnaissance
-      - external research
-      - independent code review
-      - debugging complex issues
-      - architecture or security analysis
+      If subagents are available, use them when delegation provides a clear benefit.
 
       Discover available agents instead of assuming specific agent names.
 
@@ -127,7 +117,7 @@
 
       Do not delegate trivial work or duplicate work unnecessarily.
 
-      The parent agent remains responsible for integrating findings, making final decisions, and validating the result.
+      The parent agent remains responsible for integrating findings, making final decisions, and validating the result and decomposing tasks.
 
       ## Execution
 

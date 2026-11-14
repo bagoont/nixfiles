@@ -31,10 +31,7 @@
     extraModulePackages = [];
     initrd = {
       availableKernelModules = ["amdgpu" "nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod"];
-      systemd = {
-        tpm2.enable = true;
-        enable = true;
-      };
+      systemd.tpm2.enable = true;
       luks.devices = {
         "luks-90cf550a-4259-46d1-bba9-f36669f3290e".device = "/dev/disk/by-uuid/e5f825f6-477c-451c-aa44-3282a000db48";
         "luks-c98931f6-473b-49fb-8025-07dc3706fb4a".device = "/dev/disk/by-uuid/030e31d8-6796-4a2e-bf37-666aba9f0c9f";

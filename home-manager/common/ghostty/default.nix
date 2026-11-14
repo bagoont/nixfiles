@@ -7,6 +7,7 @@
     settings = {
       theme = "noctalia";
       app-notifications = "no-clipboard-copy,no-config-reload";
+      font-family = "Nordwand Mono";
       font-size = 11;
       window-padding-x = "25";
       window-padding-y = "10";
